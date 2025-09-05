@@ -17,7 +17,6 @@ public class Demomod implements ModInitializer {
  
 	public static final Item SUSPICIOUS_SUBSTANCE = ModItems.register("suspicious_substance", Item::new, new Item.Settings().maxCount(64));
 	
-	@Override
 	public void onInitialize() {
 		
 		// This code runs as soon as Minecraft is in a mod-load-ready state.

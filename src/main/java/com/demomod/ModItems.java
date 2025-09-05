@@ -24,6 +24,7 @@ public class ModItems {
             .displayName(Text.translatable("itemGroup.tutorial.custom_item_group")) // Reference your lang file
             .entries((context, entries) -> {
                 entries.add(Demomod.SUSPICIOUS_SUBSTANCE); // Add your custom item
+				
                 // Add more items or blocks from your mod here
             })
             .build();
