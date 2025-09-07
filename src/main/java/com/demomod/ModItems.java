@@ -24,13 +24,13 @@ public class ModItems {
             .displayName(Text.translatable("itemGroup.tutorial.custom_item_group")) // Reference your lang file
             .entries((context, entries) -> {
                 entries.add(Demomod.SUSPICIOUS_SUBSTANCE); // Add your custom item
-				
+				entries.add(Demomod.POOP);
                 // Add more items or blocks from your mod here
             })
             .build();
 	
 
-	public static Item register(String name, Function<Item.Settings, Item> itemFactory, Item.Settings settings) {
+	public static Item register(String name, Function<Item.Settings, Item> itemFactory, Item.Settings settings, boolean registerItemGroup) {
 		// Create the item key.
 		RegistryKey<Item> itemKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Demomod.MOD_ID, name));
 
@@ -39,7 +39,10 @@ public class ModItems {
 
 		// Register the item.
 		Registry.register(Registries.ITEM, itemKey, item);
-		Registry.register(Registries.ITEM_GROUP, CUSTOM_ITEM_GROUP_KEY, CUSTOM_ITEM_GROUP);
+
+		if(registerItemGroup)
+			Registry.register(Registries.ITEM_GROUP, CUSTOM_ITEM_GROUP_KEY, CUSTOM_ITEM_GROUP);
+		
 
 		return item;
 
