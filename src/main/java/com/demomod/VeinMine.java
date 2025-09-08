@@ -3,6 +3,7 @@ package com.demomod;
 
 
 import com.demomod.config.ConfigData;
+import com.demomod.config.ConfigReader;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
@@ -13,14 +14,16 @@ import java.util.*;
 
 public class VeinMine {
 
-    public static ArrayList<String> protected_tools = ConfigData.tools();
+    public static ConfigReader configReader;
 
     public static List<BlockPos> findBlockPath(World world,
                                                BlockPos startingBlockPos,
                                                BlockState startState,
                                                ArrayList<BlockPos> foundBlocks) { //DFS METHOD
-        System.out.println(ConfigData.dfs_limit());
-        if (foundBlocks.size() >= ConfigData.dfs_limit())
+
+
+        configReader.of().loadConfig(ConfigReader.reader);
+        if (foundBlocks.size() >= ConfigData.dfs_limit)
             return foundBlocks;
         int x = startingBlockPos.getX();
         int y = startingBlockPos.getY();
