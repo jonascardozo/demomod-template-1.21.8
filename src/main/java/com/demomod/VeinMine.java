@@ -1,20 +1,26 @@
 package com.demomod;
 
+
+
+import com.demomod.config.ConfigData;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+
 import java.util.*;
 
 public class VeinMine {
 
+    public static ArrayList<String> protected_tools = ConfigData.tools();
 
     public static List<BlockPos> findBlockPath(World world,
                                                BlockPos startingBlockPos,
                                                BlockState startState,
                                                ArrayList<BlockPos> foundBlocks) { //DFS METHOD
-        if (foundBlocks.size() >= 50)
+        System.out.println(ConfigData.dfs_limit());
+        if (foundBlocks.size() >= ConfigData.dfs_limit())
             return foundBlocks;
         int x = startingBlockPos.getX();
         int y = startingBlockPos.getY();
