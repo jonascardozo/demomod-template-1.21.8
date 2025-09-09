@@ -14,16 +14,19 @@ import java.util.*;
 
 public class VeinMine {
 
-    public static ConfigReader configReader;
+    public static ConfigReader configReader = new ConfigReader();
+
+    public static void searchForBlocks(World world, BlockPos startingBlockPos, BlockState startState, ArrayList<BlockPos> founfBlocks)
+    {
+
+    }
 
     public static List<BlockPos> findBlockPath(World world,
                                                BlockPos startingBlockPos,
                                                BlockState startState,
                                                ArrayList<BlockPos> foundBlocks) { //DFS METHOD
 
-
-        configReader.of().loadConfig(ConfigReader.reader);
-        if (foundBlocks.size() >= ConfigData.dfs_limit)
+        if (foundBlocks.size() >= ConfigData.getInstance().dfs_limit)
             return foundBlocks;
         int x = startingBlockPos.getX();
         int y = startingBlockPos.getY();
@@ -56,6 +59,10 @@ public class VeinMine {
                 }
 
             }
+        }
+
+        public static List<BlockPos> findBlockCube(){
+
         }
 
 
